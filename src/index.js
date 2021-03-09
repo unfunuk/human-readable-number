@@ -1,48 +1,192 @@
-module.exports = function toReadable(s) {
-    var tn = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    var tw = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+module.exports = function toReadable(number) {
+    let str = "";
+    if (number == 0)
+        return "zero";
+    if (number >= 100 && number <= 999) {
+        if (number >= 100 && number < 200) {
+            str += "one hundred"
+            number -= 100;
 
-
-    s = s.toString();
-    s = s.replace(/[\, ]/g, '');
-    if (s != parseFloat(s)) return 'not a number';
-    var x = s.indexOf('.');
-    if (x == -1)
-        x = s.length;
-    if (x > 15)
-        return 'too big';
-    var n = s.split('');
-    var str = '';
-    var sk = 0;
-    for (var i = 0; i < x; i++) {
-        if ((x - i) % 3 == 2) {
-            if (n[i] == '1') {
-                str += tn[Number(n[i + 1])] + ' ';
-                i++;
-                sk = 1;
-            } else if (n[i] != 0) {
-                str += tw[n[i] - 2] + ' ';
-                sk = 1;
-            }
-        } else if (n[i] != 0) { // 0235
-            str += dg[n[i]] + ' ';
-            if ((x - i) % 3 == 0) str += 'hundred ';
-            sk = 1;
         }
-        if ((x - i) % 3 == 1) {
-            if (sk)
-                str += th[(x - i - 1) / 3] + ' ';
-            sk = 0;
+        if (number >= 200 && number < 300) {
+            str += "two hundred"
+            number -= 200;
+
+        }
+        if (number >= 300 && number < 400) {
+            str += "three hundred"
+            number -= 300;
+
+        }
+        if (number >= 400 && number < 500) {
+            str += "four hundred"
+            number -= 400;
+
+        }
+        if (number >= 500 && number < 600) {
+            str += "five hundred"
+            number -= 500;
+
+        }
+        if (number >= 600 && number < 700) {
+            str += "six hundred"
+            number -= 600;
+
+        }
+        if (number >= 700 && number < 800) {
+            str += "seven hundred"
+            number -= 700;
+
+        }
+        if (number >= 800 && number < 900) {
+            str += "eight hundred"
+            number -= 800;
+
+        }
+        if (number >= 900) {
+            str += "nine hundred"
+            number -= 900;
+
         }
     }
+    if (number >= 10 && number <= 99) {
+        if (number >= 10 && number < 11) {
+            str += " ten"
+            number -= 10;
 
-    if (x != s.length) {
-        var y = s.length;
-        str += 'point ';
-        for (var i = x + 1; i < y; i++)
-            str += dg[n[i]] + ' ';
+        }
+        if (number === 11) {
+            str += " eleven"
+            number -= 11;
+
+        }
+        if (number === 12) {
+            str += " twelve"
+            number -= 12;
+
+        }
+        if (number === 13) {
+            str += " thirteen"
+            number -= 13;
+
+        }
+        if (number === 14) {
+            str += " fourteen"
+            number -= 14;
+
+        }
+        if (number === 15) {
+            str += " fifteen"
+            number -= 15;
+
+        }
+        if (number === 16) {
+            str += " sixteen"
+            number -= 16;
+
+        }
+        if (number === 17) {
+            str += " seventeen"
+            number -= 17;
+
+        }
+        if (number === 18) {
+            str += " eighteen"
+            number -= 18;
+
+        }
+        if (number === 19) {
+            str += " nineteen"
+            number -= 19;
+
+        }
+        if (number >= 20 && number < 30) {
+            str += " twenty"
+            number -= 20;
+
+        }
+        if (number >= 30 && number < 40) {
+            str += " thirty"
+            number -= 30;
+
+        }
+        if (number >= 40 && number < 50) {
+            str += " forty"
+            number -= 40;
+
+        }
+        if (number >= 50 && number < 60) {
+            str += " fifty"
+            number -= 50;
+
+        }
+        if (number >= 60 && number < 70) {
+            str += " sixty"
+            number -= 60;
+
+        }
+        if (number >= 70 && number < 80) {
+            str += " seventy"
+            number -= 70;
+
+        }
+        if (number >= 80 && number < 90) {
+            str += " eighty"
+            number -= 80;
+
+        }
+        if (number >= 90) {
+            str += " ninety"
+            number -= 90;
+
+        }
     }
-    return str.replace(/\s+/g, ' ');
+    if (number > 0 && number <= 9) {
+        if (number >= 1 && number < 2) {
+            str += " one"
+            number -= 1;
+
+        }
+        if (number >= 2 && number < 3) {
+            str += " two"
+            number -= 2;
+
+        }
+        if (number >= 3 && number < 4) {
+            str += " three"
+            number -= 3;
+
+        }
+        if (number >= 4 && number < 5) {
+            str += " four"
+            number -= 4;
+
+        }
+        if (number >= 5 && number < 6) {
+            str += " five"
+            number -= 5;
+
+        }
+        if (number >= 6 && number < 7) {
+            str += " six"
+            number -= 6;
+
+        }
+        if (number >= 7 && number < 8) {
+            str += " seven"
+            number -= 7;
+
+        }
+        if (number >= 8 && number < 9) {
+            str += " eight"
+            number -= 8;
+
+        }
+        if (number >= 9) {
+            str += " nine"
+            number -= 9;
+
+        }
+    }
+    return str;
 }
-
-
